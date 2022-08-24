@@ -6,40 +6,37 @@
   <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
-    <table id='' border="1">
-      <tr>
-          <th>Order</th>
-          <th>modelId</th>
-          <th>attributionUrl</th>
-          <th>modelTitle</th>
-          <th>thumbnailUrl</th>
-      </tr>
-      <tr>
-          <td>1</td>
-          <td>5ec03923-0066-4aea-89b1-2e4ea275c345</td>
-          <td>https://thangs.com/designer/Rocket-Puff/3d-model/tree-pickstl-8352 </td>
-          <td>tree pick.stl</td>
-          <td>https://thangs-thumbs-dot-gcp-and-physna.uc.r.appspot.com/convert/54ae5000-d7f6-498e-a786-86d8d41c78c4.stl</td>
-      </tr>
-      </table>
- 
-<script>
-(function writeTable() {
-    // cache <tbody> element:
-    var url = "https://thangs.com/api/models/v2/search-by-text?searchTerm=tree&scope=thangs";
-    for (var i = 0; i < array.length / 8; i++) {
-        // create an <tr> element, append it to the <tbody> and cache it as a variable:
-        var tr = $('<tr/>').appendTo(tbody);
-        for (var j = 0; j < totalCells; j++) {
-            // append <td> elements to previously created <tr> element:
-            tr.append('<td>' + array[count] + '</td>');
-            count++;
-        }
+  <table border="1" id="result"/>
+  <script>
+    var table = $("#result");
+    var tr = $('<tr/>').appendTo(table);
+    // tr.append("<th>" + "Order" + "</th>");
+    // tr.append("<th>" + "modelId" + "</th>");
+    // appendTo: tr -> table (<table><tr></tr></table>)
+    // append: tr <- th  (<tr><th></th></tr>)
+    // $("<th>" + "Order" + "</th>").appendTo(tr)  // то же самое tr.append("<th>" + "Order" + "</th>");
+    // <tr/> то же самое, что и   <tr></tr>
+    // <table/> то же самое, что и <table></table>
+    var headers = ["Order", "modelId", "attributionUrl", "modelTitle", "thumbnailUrl"];
+    // headers[0] -> "Order"
+    for (var i=0; i<headers.length; i++){
+      tr.append("<th>" + headers[i] + "</th>");
     }
-    // reset the count:
-    count = 0;
-})();
-</script>
- 
+
+    var tr1 = $('<tr/>').appendTo(table);
+    var text = ["1", "5ec03923-0066-4aea-89b1-2e4ea275c345", "https://thangs.com/designer/Rocket-Puff/3d-model/tree-pickstl-8352 ", "tree pick.stl", "https://thangs-thumbs-dot-gcp-and-physna.uc.r.appspot.com/convert/54ae5000-d7f6-498e-a786-86d8d41c78c4.stl"];
+    for (var i=0; i<text.length; i++){
+      tr1.append("<td>" + text[i] + "</td>");
+    }
+      // console.log(i, headers[i])
+  </script>
+
+  <!-- <table border="1">
+    <tr>
+      <th>Order</th>
+      <th>modelId</th>
+    </tr>
+  </table> -->
 </body>
+
 </html>
